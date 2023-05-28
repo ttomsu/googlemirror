@@ -728,6 +728,34 @@ func (s *DateFilter) MarshalJSON() ([]byte, error) {
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
+type FeatureFilter struct {
+
+	// Possible values: "NONE", "FAVORITES"
+	IncludedFeatures []string `json:"includedFeatures,omitempty"`
+
+	// ForceSendFields is a list of field names (e.g. "Dates") to
+	// unconditionally include in API requests. By default, fields with
+	// empty values are omitted from API requests. However, any non-pointer,
+	// non-interface field appearing in ForceSendFields will be sent to the
+	// server regardless of whether the field is empty or not. This may be
+	// used to include empty fields in Patch requests.
+	ForceSendFields []string `json:"-"`
+
+	// NullFields is a list of field names (e.g. "Dates") to include in API
+	// requests with the JSON null value. By default, fields with empty
+	// values are omitted from API requests. However, any field with an
+	// empty value appearing in NullFields will be sent to the server as
+	// null. It is an error if a field in this list has a non-empty value.
+	// This may be used to include null fields in Patch requests.
+	NullFields []string `json:"-"`
+}
+
+func (s *FeatureFilter) MarshalJSON() ([]byte, error) {
+	type NoMethod FeatureFilter
+	raw := NoMethod(*s)
+	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
+}
+
 // DateRange: Defines a range of dates. Both dates must be of the same
 // format (see Date
 // definition for more).
@@ -811,6 +839,8 @@ type Filters struct {
 
 	// MediaTypeFilter: Filters the media items based on the type of media.
 	MediaTypeFilter *MediaTypeFilter `json:"mediaTypeFilter,omitempty"`
+
+	FeatureFilter *FeatureFilter `json:"featureFilter,omitempty"`
 
 	// ForceSendFields is a list of field names (e.g. "ContentFilter") to
 	// unconditionally include in API requests. By default, fields with
